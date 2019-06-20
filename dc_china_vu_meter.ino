@@ -107,6 +107,8 @@ void setLevel(uint8_t level) {
   }
 }
 
+// ShiftOut and starting point for 74HC595 control
+// from https://www.arduino.cc/en/Tutorial/ShiftOut
 void shiftOut(int myDataPin, int myClockPin, byte myDataOut) {
   // This shifts 8 bits out MSB first,
   // on the rising edge of the clock,
