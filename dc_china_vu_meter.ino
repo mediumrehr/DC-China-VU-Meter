@@ -87,21 +87,19 @@ void loop() {
 }
  
 void setLevel(uint8_t level) {
-  // cycle through different LED sets via output pins
-  // note: this would probably be faster just setting
-  // the shift output and then cycling output pins
-  // instead of shifting for each output pin
-  // ...but haven't tested that.
-  Serial.print("level: ");
-  Serial.println(level);
+  // print level for testing
+  // Serial.print("level: ");
+  // Serial.println(level);
 
+  // shift out LEDs to match level
   // turn on LEDs based on level
   uint8_t data = dataArray[level];
   
   digitalWrite(latchPin, 0);
   shiftOut(dataPin, clockPin, data);
   digitalWrite(latchPin, 1);
-    
+  
+  // cycle output controllers
   for (int k=0; k<4; k++) {
     digitalWrite(outPins[k], HIGH);
     delay(1);
